@@ -1,8 +1,11 @@
+import 'package:caloriec/providers/calories_provider.dart';
+
 import 'settings_screen.dart';
 import '../widgets/counter.dart';
 import '../widgets/custom_add_sheet.dart';
 import '../widgets/quick_buttons_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route = '/';
@@ -14,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    context.read<CaloriesProvider>().fetchDB();
+    super.initState();
+  }
+
   void _showSheet() {
     showModalBottomSheet(
       context: context,

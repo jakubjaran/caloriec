@@ -50,6 +50,9 @@ class _CounterState extends State<Counter> {
   Widget build(BuildContext context) {
     return Consumer<CaloriesProvider>(
       builder: (_, data, ch) {
+        if (data.maxCalories == 0) {
+          return const SizedBox.shrink();
+        }
         final double counterPercent = data.caloriesValue / data.maxCalories;
         return CircularPercentIndicator(
           animation: true,

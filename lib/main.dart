@@ -1,4 +1,5 @@
 import 'package:caloriec/screens/search_screen.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'providers/calories_provider.dart';
 import 'screens/home_screen.dart';
@@ -6,7 +7,8 @@ import 'screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 
