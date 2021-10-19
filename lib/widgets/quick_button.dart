@@ -1,4 +1,4 @@
-import 'package:caloriec/providers/calories_provider.dart';
+import '../providers/calories_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,10 +10,9 @@ class QuickButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        final cp = context.read<CaloriesProvider>();
-        value == 0 ? cp.toggleQuickValues() : cp.updateCalories(value);
-      },
+      onPressed: value == 0
+          ? () => context.read<CaloriesProvider>().toggleQuickValues()
+          : () => context.read<CaloriesProvider>().updateCalories(value),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
           Theme.of(context).colorScheme.surface,

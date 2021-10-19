@@ -7,6 +7,14 @@ class CaloriesProvider with ChangeNotifier {
   List<int> _quickValues = [10, 25, 50, 75, 100, 150, 200];
   List<int> get quickValues => _quickValues;
 
+  int _maxCalories = 2500;
+  int get maxCalories => _maxCalories;
+
+  void updateMaxCalories(int value) {
+    _maxCalories = value;
+    notifyListeners();
+  }
+
   void updateCalories(int value) {
     _caloriesValue += value;
     if (_caloriesValue < 0) {

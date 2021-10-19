@@ -1,4 +1,4 @@
-import 'package:caloriec/providers/settings_provider.dart';
+import '../providers/calories_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,14 +12,12 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  final _usernameController = TextEditingController();
   final _caloriesController = TextEditingController();
 
   @override
   void initState() {
-    final settings = context.read<SettingsProvider>();
-    _usernameController.text = settings.username;
-    _caloriesController.text = settings.maxCalories.toString();
+    _caloriesController.text =
+        context.read<CaloriesProvider>().maxCalories.toString();
     super.initState();
   }
 
@@ -33,21 +31,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: const Text('Ustawienia'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 40),
         child: Column(
           children: [
             TextField(
-              textAlign: TextAlign.center,
-              decoration: const InputDecoration(
-                label: Text('Imię'),
-              ),
-              controller: _usernameController,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              textAlign: TextAlign.center,
               decoration: const InputDecoration(
                 label: Text('Ilość kalorii'),
               ),
@@ -59,8 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             ElevatedButton.icon(
               onPressed: () {
-                context.read<SettingsProvider>().updateSettings(
-                      _usernameController.text,
+                context.read<CaloriesProvider>().updateMaxCalories(
                       int.parse(_caloriesController.text),
                     );
               },

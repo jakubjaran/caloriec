@@ -1,7 +1,6 @@
-import 'package:caloriec/providers/calories_provider.dart';
-import 'package:caloriec/providers/settings_provider.dart';
-import 'package:caloriec/screens/home_screen.dart';
-import 'package:caloriec/screens/settings_screen.dart';
+import 'providers/calories_provider.dart';
+import 'screens/home_screen.dart';
+import 'screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,15 +12,8 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<SettingsProvider>(
-          create: (_) => SettingsProvider(),
-        ),
-        ChangeNotifierProvider<CaloriesProvider>(
-          create: (_) => CaloriesProvider(),
-        ),
-      ],
+    return ChangeNotifierProvider(
+      create: (_) => CaloriesProvider(),
       child: MaterialApp(
         title: 'caloriec',
         theme: ThemeData(
