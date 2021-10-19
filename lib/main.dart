@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => CaloriesProvider(),
       child: MaterialApp(
-        title: 'caloriec',
+        title: 'Caloriec',
         theme: ThemeData(
           brightness: Brightness.dark,
           colorScheme: ColorScheme(

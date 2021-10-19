@@ -1,4 +1,5 @@
 import 'package:caloriec/providers/calories_provider.dart';
+import 'package:caloriec/widgets/history_controls.dart';
 
 import 'settings_screen.dart';
 import '../widgets/counter.dart';
@@ -65,6 +66,8 @@ class _HomeScreenState extends State<HomeScreen> {
             children: const [
               Counter(),
               Spacer(),
+              HistoryControls(),
+              SizedBox(height: 20),
               QuickButtonsGrid(),
             ],
           ),

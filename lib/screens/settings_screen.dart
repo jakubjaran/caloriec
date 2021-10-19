@@ -46,9 +46,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             ElevatedButton.icon(
               onPressed: () {
-                context.read<CaloriesProvider>().updateMaxCalories(
-                      int.parse(_caloriesController.text),
-                    );
+                if (_caloriesController.text != '') {
+                  context.read<CaloriesProvider>().updateMaxCalories(
+                        int.parse(_caloriesController.text),
+                      );
+                  Navigator.of(context).pop();
+                }
               },
               icon: const Icon(Icons.save),
               label: const Text('Zapisz'),

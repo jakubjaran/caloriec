@@ -22,7 +22,6 @@ class QuickButtonsGrid extends StatelessWidget {
           ),
           children: [
             for (int val in data.quickValues) QuickButton(val),
-            const QuickButton(0),
           ],
         );
       }),

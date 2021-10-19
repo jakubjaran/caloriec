@@ -10,9 +10,7 @@ class QuickButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: value == 0
-          ? () => context.read<CaloriesProvider>().toggleQuickValues()
-          : () => context.read<CaloriesProvider>().updateCalories(value),
+      onPressed: () => context.read<CaloriesProvider>().updateCalories(value),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
           Theme.of(context).colorScheme.surface,
