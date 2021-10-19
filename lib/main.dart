@@ -1,3 +1,4 @@
+import 'package:caloriec/screens/history_screen.dart';
 import 'package:caloriec/screens/search_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.route: (_) => const HomeScreen(),
           SettingsScreen.route: (_) => const SettingsScreen(),
           SearchScreen.route: (_) => const SearchScreen(),
+          HistoryScreen.path: (_) => const HistoryScreen(),
         },
       ),
     );

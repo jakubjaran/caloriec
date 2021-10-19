@@ -61,6 +61,14 @@ class CaloriesProvider with ChangeNotifier {
     }
   }
 
+  void removeFromHistory(int index) {
+    final value = _addedValues[index] * -1;
+    _redoValues.insert(0, _addedValues[index]);
+    _addedValues.removeAt(index);
+    updateCalories(value, isUndo: true);
+    notifyListeners();
+  }
+
   void fetchDB() async {
     var box = await Hive.openBox('db');
     final DateTime date = box.get('date', defaultValue: DateTime.now());

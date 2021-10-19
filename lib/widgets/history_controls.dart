@@ -1,4 +1,5 @@
 import 'package:caloriec/providers/calories_provider.dart';
+import 'package:caloriec/screens/history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,12 @@ class HistoryControls extends StatelessWidget {
                   }
                 : null,
             icon: const Icon(Icons.undo),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(HistoryScreen.path);
+            },
+            icon: const Icon(Icons.history),
           ),
           IconButton(
             onPressed: data.redoValues.isNotEmpty
