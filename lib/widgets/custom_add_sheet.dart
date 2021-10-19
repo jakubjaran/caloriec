@@ -1,3 +1,5 @@
+import 'package:caloriec/widgets/search_dialog.dart';
+
 import '../providers/calories_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -95,10 +97,37 @@ class _CustomAddSheetState extends State<CustomAddSheet> {
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton.icon(
-            onPressed: _addCalories,
-            icon: const Icon(Icons.add),
-            label: const Text('Dodaj'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton.icon(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => const SearchDialog(),
+                  );
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                label: const Text(
+                  'Sprawdź',
+                ),
+              ),
+              ElevatedButton.icon(
+                onPressed: _addCalories,
+                icon: const Icon(Icons.add),
+                label: const Text('Dodaj'),
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all(
+                    const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

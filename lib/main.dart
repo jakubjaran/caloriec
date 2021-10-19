@@ -1,3 +1,5 @@
+import 'package:caloriec/screens/search_screen.dart';
+
 import 'providers/calories_provider.dart';
 import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
         routes: {
           HomeScreen.route: (_) => const HomeScreen(),
           SettingsScreen.route: (_) => const SettingsScreen(),
+          SearchScreen.route: (_) => const SearchScreen(),
         },
       ),
     );

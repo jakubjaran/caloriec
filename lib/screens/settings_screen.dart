@@ -52,6 +52,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
               icon: const Icon(Icons.save),
               label: const Text('Zapisz'),
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(
+                  const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
+              ),
             )
           ],
         ),
