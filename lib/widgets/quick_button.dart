@@ -1,16 +1,15 @@
-import '../providers/calories_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class QuickButton extends StatelessWidget {
   final int value;
+  final Function addValue;
 
-  const QuickButton(this.value, {Key? key}) : super(key: key);
+  const QuickButton(this.value, this.addValue, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => context.read<CaloriesProvider>().updateCalories(value),
+      onPressed: () => addValue(value),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
           Theme.of(context).colorScheme.surface,

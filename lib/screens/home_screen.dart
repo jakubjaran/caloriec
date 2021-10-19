@@ -40,6 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  int _newValue = 0;
+
+  void addValue(int value) {
+    setState(() {
+      _newValue += value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,15 +68,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 40),
+        padding: const EdgeInsets.only(top: 40, bottom: 90),
         child: Center(
           child: Column(
-            children: const [
-              Counter(),
-              Spacer(),
-              HistoryControls(),
-              SizedBox(height: 20),
-              QuickButtonsGrid(),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Counter(),
+              const Spacer(),
+              const HistoryControls(),
+              const SizedBox(height: 20),
+              QuickButtonsGrid(_newValue, addValue),
             ],
           ),
         ),
@@ -80,7 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
             topRight: Radius.circular(200),
           ),
         ),
-        onPressed: _showSheet,
+        onPressed: _newValue == 0
+            ? _showSheet
+            : () {
+                context.read<CaloriesProvider>().updateCalories(_newValue);
+                setState(() {
+                  _newValue = 0;
+                });
+              },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
